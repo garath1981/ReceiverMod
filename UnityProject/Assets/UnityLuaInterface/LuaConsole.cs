@@ -7,7 +7,7 @@ using LuaInterface;
 public class LuaConsole : MonoBehaviour {
 
 	Lua lua = new Lua();
-	string consoleOutput = "-----";
+	string consoleOutput = "-----\nLua 5.1\nLuaInterface 1.5.3\n-----";
 	string consoleInput = "";
 
 	bool showConsole = false;
@@ -17,10 +17,6 @@ public class LuaConsole : MonoBehaviour {
 
 	void Start(){
 		lua.RegisterFunction("print", this, this.GetType().GetMethod("Print"));
-
-		lua.DoString("print('Lua 5.1')");
-		lua.DoString("print('LuaInterace 1.5.3')");
-		lua.DoString("print('-----')");
 	}
 
 	void Update(){
@@ -35,7 +31,7 @@ public class LuaConsole : MonoBehaviour {
 		GUI.skin = skin;
 
 		if(showConsole)
-			consoleRect = GUI.Window(999, consoleRect, ConsoleFunction, "Paused");
+			consoleRect = GUI.Window(999, consoleRect, ConsoleFunction, "Console");
 	}
 
 	void ConsoleFunction(int windowID){
@@ -57,20 +53,22 @@ public class LuaConsole : MonoBehaviour {
 	void DoConsoleLua(){
 
 		string luaRunStr = consoleInput;
-		consoleInput = "";
 
 		//People will make mistakes, expect errors
 		try {
 			lua.DoString(luaRunStr);
 		}
 		catch (LuaException error){
-			consoleOutput += "\nError : " + error;
+			consoleOutput += luaRunStr;
+			consoleOutput += "\n>	Error : " + error;
 		}
+
+		consoleInput = "";
 
 	}
 
 	public void Print(string printStr){
-		consoleOutput += "\n" + printStr;
+		consoleOutput += "\n" + consoleInput + "\n>		" + printStr;
 	}
 
 }
