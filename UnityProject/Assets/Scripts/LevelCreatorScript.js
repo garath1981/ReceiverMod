@@ -6,6 +6,8 @@ var level_tiles : GameObject[];
 var shadowed_lights : Array;
 var tiles : Array;
 
+var playerObject : GameObject;
+
 function SpawnTile(where:int, challenge:float , player:boolean){
 	var level_obj = level_tiles[Random.Range(0,level_tiles.Length)];
 	var level = new GameObject(level_obj.name + " (Clone)");
@@ -44,9 +46,14 @@ function SpawnTile(where:int, challenge:float , player:boolean){
 			var j=0;
 			for(var child : Transform in players){
 				if(j == save){
-					child_obj = Instantiate(child.gameObject, Vector3(0,0,where*20) + child.localPosition + players.localPosition, child.localRotation);
+					//child_obj = Instantiate(child.gameObject, Vector3(0,0,where*20) + child.localPosition + players.localPosition, child.localRotation);
+					//child_obj.transform.parent = level.transform;
+					//child_obj.name = "Player";
+
+					child_obj = Instantiate(playerObject, Vector3(0,0,where*20) + child.localPosition + players.localPosition, child.localRotation);
 					child_obj.transform.parent = level.transform;
 					child_obj.name = "Player";
+
 				}
 				++j;
 			}
