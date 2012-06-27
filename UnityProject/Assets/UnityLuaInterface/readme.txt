@@ -1,57 +1,27 @@
 Unity Lua Interface Library
-
-by Anomalous Underdog
-
-
-This scripting package allows you to run and control a Lua interpreter inside Unity.
-
-Practical applications for this include modability features for your games, allowing players to mod your game to the extent that you want it to.
-
-This is a very bare-bones package meant only to help you get started.
+Original Revision by Anomalous Underdog
 
 
+Installation
+
+Put lua51.dll & luanet.dll with your Unity Editor binary file
+Also put them with your distributed .exe
 
 
-Notes
+Usage
 
-To make the example scene work, copy lua51.dll and luanet.dll to where the Unity binary file resides (in Windows, where the Unity.exe is in, most likely in "C:\Program Files\Unity\Editor\")
-
-For release, also copy the same dll files to where your binary file (.exe file in Windows) resides.
-
-
+import LuaInterface (JS)
+	or
+using LuaInterface (C#)
 
 
-Directions
-
-Instantiate a Lua Interpreter by creating a new LuaInterface.Lua variable. You can use "import LuaInterface" (in UnityScript) or "using LuaInterface" (in C#) to shorten your code.
+Examples
 
 LuaInterface.Lua lua = new LuaInterface.Lua();
-
-
-You can run code by feeding a string to it using LuaInterface.Lua.DoString()
-
 lua.DoString("num = 2"); // creates a lua global variable called num and assign 2 to it
-
-
-You can then get the value of a Lua variable into Unity by the [] operator:
-
 double num = (double)lua["num"]; // (cast it to double)
-
-
-Or you can just use one of the convenience functions to shorten that for you:
-
 double num = lua.GetNumber("num");
-
-There's also Lua.GetString(), Lua.GetTable(), Lua.GetFunction(), and I took the liberty of adding in a Lua.GetBoolean() seeing as it was not there yet.
-
-
-If you have a Lua script file, you can use LuaInterface.Lua.DoFile() to execute it.
-
 lua.DoFile(Application.dataPath + "/MyLuaScript.lua");
-
-More example code usage can be found in LuaInterfaceTest.Start() (in file LuaInterfaceTest.cs), or read the LuaInterface User Guide pdf found in this asset package.
-
-
 
 
 Licenses
