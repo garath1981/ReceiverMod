@@ -44,7 +44,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaConsole.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\AssemblyInfo.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\CheckType.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\GenerateEventAssembly.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\Lua.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\LuaDLL.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\LuaException.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\Metatables.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\MethodWrapper.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\ObjectTranslator.cs" />
+     <Compile Include="Assets\UnityLuaInterface\LuaInterface\ProxyType.cs" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
@@ -57,6 +67,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\SSAA.shader" />
@@ -68,6 +79,7 @@
      <None Include="Assets\Materials\Illumin-Diffuse - custom.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\frag_ao.cginc" />
      <None Include="Assets\Materials\Masked Tint - Vertex Colors.shader" />
+     <None Include="Assets\UnityLuaInterface\readme.txt" />
      <None Include="Assets\Materials\Particle Alpha Blend modified.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShift.shader" />
@@ -105,9 +117,11 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
+     <None Include="Assets\UnityLuaInterface\LuaInterface\README.txt" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
+     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\TextureCopy.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
