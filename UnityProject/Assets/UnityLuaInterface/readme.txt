@@ -2,6 +2,7 @@ Unity Lua Interface Library
 
 by Anomalous Underdog
 
+test
 
 This scripting package allows you to run and control a Lua interpreter inside Unity.
 
@@ -93,7 +94,7 @@ Lua is free software: it may be used for any purpose, including commercial purpo
 
 ===============================================================================
 
-Copyright © 1994–2010 Lua.org, PUC-Rio.
+Copyright ï¿½ 1994ï¿½2010 Lua.org, PUC-Rio.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of Lua and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
