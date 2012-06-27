@@ -1,4 +1,6 @@
 #pragma strict
+#pragma implicit
+#pragma downcast
 
 var destroy_effect : GameObject;
 var light_color = Color(1,1,1);

@@ -1,4 +1,6 @@
 #pragma strict
+#pragma implicit
+#pragma downcast
 
 var opac = 0.0;
 

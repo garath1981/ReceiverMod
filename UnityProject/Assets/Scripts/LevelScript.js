@@ -1,4 +1,6 @@
 #pragma strict
+#pragma implicit
+#pragma downcast
 
 function Start () {
 	var enemies = transform.FindChild("enemies");

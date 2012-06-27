@@ -1,4 +1,6 @@
 #pragma strict
+#pragma implicit
+#pragma downcast
 
 var sound_hit_concrete : AudioClip[];
 var sound_hit_metal : AudioClip[];

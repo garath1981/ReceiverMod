@@ -1,5 +1,6 @@
 #pragma strict
-
+#pragma implicit
+#pragma downcast
 private var num_rounds = 8;
 private var kMaxRounds = 8;
 private var round_pos : Vector3[];

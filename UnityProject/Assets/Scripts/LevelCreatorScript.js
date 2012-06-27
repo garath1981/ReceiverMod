@@ -1,4 +1,6 @@
 #pragma strict
+#pragma implicit
+#pragma downcast
 
 var level_tiles : GameObject[];
 var shadowed_lights : Array;

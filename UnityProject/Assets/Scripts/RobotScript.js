@@ -1,5 +1,6 @@
-
 #pragma strict
+#pragma implicit
+#pragma downcast
 
 var sound_gunshot : AudioClip[];
 var sound_damage_camera : AudioClip[];
