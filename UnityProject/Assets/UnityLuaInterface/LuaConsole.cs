@@ -11,12 +11,15 @@ public class LuaConsole : MonoBehaviour {
 	string consoleInput = "";
 
 	bool showConsole = false;
-	Rect consoleRect = new Rect(16, 16, 480, 320);
+	public Rect consoleRect = new Rect(16, 16, 480, 320);
 	Vector2 scrollPosition = Vector2.zero;
 	public GUISkin skin;
 
 	void Start(){
+		lua.RegisterFunction("clear", this, this.GetType().GetMethod("ClearConsole"));
 		lua.RegisterFunction("print", this, this.GetType().GetMethod("Print"));
+		lua.RegisterFunction("changelevel", this, this.GetType().GetMethod("ChangeLevel"));
+		lua.RegisterFunction("map", this, this.GetType().GetMethod("ChangeLevel"));
 	}
 
 	void Update(){
@@ -30,11 +33,12 @@ public class LuaConsole : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = skin;
 
-		if(showConsole)
+		if(showConsole){
 			consoleRect = GUI.Window(999, consoleRect, ConsoleFunction, "Console");
+		}
 	}
 
-	void ConsoleFunction(int windowID){
+	public void ConsoleFunction(int windowID){
 
 		scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 			GUILayout.Label(consoleOutput);
@@ -67,8 +71,44 @@ public class LuaConsole : MonoBehaviour {
 
 	}
 
+	public void ClearConsole(){
+		consoleOutput = "";
+	}
+
 	public void Print(string printStr){
 		consoleOutput += "\n" + consoleInput + "\n>		" + printStr;
+	}
+
+	public void ChangeLevel(string levelName){
+
+		switch(levelName){
+
+			case "shooting_range":
+				Application.LoadLevelAsync("shooting_range");
+				consoleOutput += "\n" + consoleInput + "\n>		Loading shooting range. Please wait...";
+				break;
+
+			case "game":
+				Application.LoadLevelAsync("scene");
+				consoleOutput += "\n" + consoleInput + "\n>		Loading main game scene. Please wait...";
+				break;
+
+			case "winscene":
+				Application.LoadLevelAsync("scene");
+				consoleOutput += "\n" + consoleInput + "\n>		Loading ending sequence scene. Please wait...";
+				break;
+
+			case "menu":
+				Application.LoadLevelAsync("scene");
+				consoleOutput += "\n" + consoleInput + "\n>		Loading main menu scene. Please wait...";
+				break;
+
+			default:
+				consoleOutput += "\n" + consoleInput + "\n>		Level " + levelName + " is not a valid level.";
+				break;
+
+		}
+
 	}
 
 }

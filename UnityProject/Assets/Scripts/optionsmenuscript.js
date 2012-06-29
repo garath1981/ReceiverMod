@@ -37,14 +37,13 @@ function HideMenu(){
 }
 
 function OnGUI () {
-	if(!show_menu){
-		return;
+	if(show_menu){
+		windowRect = GUI.Window (
+			0, 
+			Rect(Screen.width*0.5 - menu_width*0.5, Screen.height*0.5 - menu_height*0.5, menu_width, menu_height), 
+			WindowFunction_New, 
+			"Paused", skin.window);
 	}
-	windowRect = GUI.Window (
-		0, 
-		Rect(Screen.width*0.5 - menu_width*0.5, Screen.height*0.5 - menu_height*0.5, menu_width, menu_height), 
-		WindowFunction_New, 
-		"Paused", skin.window);
 }
 
 private var draw_cursor : Vector2;
@@ -357,8 +356,7 @@ function DrawMenu_Main(){
 	}
 
 	if( GUILayout.Button("Quit") ){
-		Screen.lockCursor = true;
-		show_menu = false;
+		Application.Quit();
 	}
 
 	GUILayout.FlexibleSpace();

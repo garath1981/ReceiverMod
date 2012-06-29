@@ -10,6 +10,7 @@ var GameScene : GameObject;
 private var fade_in = 0.0;
 private var fade_out = 0.0;
 private var fade_out_delay = 0.0;
+private var can_change_level = true;
 
 var music_a : AudioClip;
 var music_b : AudioClip;
@@ -25,6 +26,7 @@ function Awake () {
 }
 
 function Start () {
+	can_change_level = true;
 	audiosource_music_a = gameObject.AddComponent(AudioSource);
 	audiosource_music_a.loop = true;
 	audiosource_music_a.clip = music_a;
@@ -78,7 +80,8 @@ function OnGUI(){
 	        audiosource_music_b.Stop();
 	    }
     }
-    if(fade_out_delay >= 0.2){
-		Application.LoadLevel("scene");
+    if(fade_out_delay >= 0.2 && can_change_level){
+		Application.LoadLevelAsync("scene");
+		can_change_level = false;
 	}	
 }
