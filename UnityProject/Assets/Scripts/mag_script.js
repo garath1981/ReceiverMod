@@ -55,7 +55,13 @@ function NumRounds() : int {
 
 function Start () {
 	old_pos = transform.position;
-	num_rounds = Random.Range(0,kMaxRounds);
+
+	if(Application.loadedLevelName == "shooting_range"){
+		num_rounds = kMaxRounds;
+	} else {
+		num_rounds = Random.Range(0,kMaxRounds);
+	}
+
 	round_pos = new Vector3[kMaxRounds];
 	for(var i=0; i<kMaxRounds; ++i){
 		var round = transform.FindChild("round_"+(i+1));

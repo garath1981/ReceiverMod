@@ -3,6 +3,7 @@
 var bullet_obj : GameObject;
 
 function Start () {
+
 	var num_bullets = Random.Range(1,6);
 	for(var i=0; i<num_bullets; ++i){
 		var bullet : GameObject = Instantiate(bullet_obj);
@@ -14,7 +15,7 @@ function Start () {
 		bullet.AddComponent(Rigidbody);
 		bullet.GetComponent(ShellCasingScript).collided = true;
 	}
-	if(Random.Range(0,4) == 0){
+	if(Random.Range(0,4) == 0 && Application.loadedLevelName != "shooting_range"){
 		var tape : GameObject = Instantiate(GameObject.Find("gui_skin_holder").GetComponent(GUISkinHolder).tape_object);
 		tape.transform.position = transform.position + 
 			Vector3(Random.Range(-0.1,0.1),
@@ -22,6 +23,7 @@ function Start () {
 					Random.Range(-0.1,0.1));
 		tape.transform.rotation = BulletScript.RandomOrientation();		
 	}
+	
 }
 
 function Update () {
