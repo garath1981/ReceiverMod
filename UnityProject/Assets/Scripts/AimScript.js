@@ -276,11 +276,18 @@ function Start() {
 	for(i=0; i<10; ++i){
 		weapon_slots[i] = new WeaponSlot();
 	}
+
+
 	var num_start_mags = Random.Range(0,3);
+	if(Application.loadedLevelName == "shooting_range"){
+		num_start_mags = 2;
+	}
 	for(i=1; i<num_start_mags+1; ++i){
 		weapon_slots[i].type = WeaponSlotType.MAGAZINE;
 		weapon_slots[i].obj = Instantiate(magazine_obj);
 	}
+
+
 	loose_bullets = new Array();
 	loose_bullet_spring = new Array();
 	var num_start_bullets = Random.Range(0,10);
@@ -372,7 +379,7 @@ function HandleControls() {
 				if(!nearest_mag || dist < nearest_mag_dist){	
 					nearest_mag_dist = dist;
 					nearest_mag = collider.gameObject;
-				}					
+				}
 			} else if((collider.gameObject.name == casing_with_bullet.name || collider.gameObject.name == casing_with_bullet.name+"(Clone)") && collider.gameObject.rigidbody){
 				collected_rounds.push(collider.gameObject);			
 				collider.gameObject.rigidbody.useGravity = false;

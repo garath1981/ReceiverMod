@@ -54,10 +54,13 @@
      <Compile Include="Assets\Scripts\LevelCreatorScript.js" />
      <Compile Include="Assets\Scripts\LevelScript.js" />
      <Compile Include="Assets\Scripts\MusicScript.js" />
+     <Compile Include="Assets\Scripts\OnShot\OnShot.js" />
+     <Compile Include="Assets\Scripts\OnShot\RangeTarget.js" />
      <Compile Include="Assets\Scripts\PlatformInputController.js" />
      <Compile Include="Assets\Scripts\RobotScript.js" />
      <Compile Include="Assets\Scripts\ShellCasingScript.js" />
      <Compile Include="Assets\Scripts\ShootableLight.js" />
+     <Compile Include="Assets\Scripts\Shooting Range\TargetPracticeHud.js" />
      <Compile Include="Assets\Scripts\electricsparkscript.js" />
      <Compile Include="Assets\Scripts\mag_script.js" />
      <Compile Include="Assets\Scripts\muzzleflashscript.js" />

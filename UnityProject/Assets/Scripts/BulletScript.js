@@ -78,19 +78,23 @@ function Update () {
 			transform.position = hit.point;
 			var ricochet_amount = Vector3.Dot(velocity.normalized, hit.normal) * -1.0;
 			if(Random.Range(0.0,1.0) > ricochet_amount && Vector3.Magnitude(velocity) * (1.0-ricochet_amount) > 10.0){
+
 				var ricochet = Instantiate(bullet_obj, hit.point, transform.rotation);
 				var ricochet_vel = velocity * 0.3 * (1.0-ricochet_amount);
 				velocity -= ricochet_vel;
 				ricochet_vel = Vector3.Reflect(ricochet_vel, hit.normal);
 				ricochet.GetComponent(BulletScript).SetVelocity(ricochet_vel);
 				PlaySoundFromGroup(sound_hit_ricochet, hostile ? 1.0 : 0.6);
+
 			} else if(turret_script && velocity.magnitude > 100.0){
+
 				var new_hit:RaycastHit;
 				if(Physics.Linecast(hit.point + velocity.normalized * 0.001, hit.point + velocity.normalized, new_hit, 1<<11 | 1<<12)){
 					if(new_hit.collider.gameObject.layer == 12){
 						turret_script.WasShotInternal(new_hit.collider.gameObject);
 					}
-				}					
+				}
+
 			}
 			if(hit_transform_obj.rigidbody){
 				hit_transform_obj.rigidbody.AddForceAtPosition(velocity * 0.01, hit.point, ForceMode.Impulse);
@@ -130,7 +134,13 @@ function Update () {
 				effect.transform.position += hit.normal * 0.05;
 				hole.transform.position += hit.normal * 0.01;
 				if(!aim_script){
+
 					hole.transform.parent = hit_obj.transform;
+					var comp = hit.transform.GetComponent(OnShotCommand);
+					if(comp != null){
+					   	hit_obj.transform.GetComponent(OnShotCommand).OnShot();
+					}
+
 				} else {
 					hole.transform.parent = GameObject.Find("Main Camera").transform;
 				}
