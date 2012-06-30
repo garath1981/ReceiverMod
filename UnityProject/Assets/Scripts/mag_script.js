@@ -58,6 +58,7 @@ function Start () {
 
 	if(Application.loadedLevelName == "shooting_range"){
 		num_rounds = kMaxRounds;
+		transform.rotation = Quaternion.Euler( Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360) );
 	} else {
 		num_rounds = Random.Range(0,kMaxRounds);
 	}

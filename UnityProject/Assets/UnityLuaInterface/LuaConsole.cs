@@ -84,7 +84,7 @@ public class LuaConsole : MonoBehaviour {
 		switch(levelName){
 
 			case "shooting_range":
-				Application.LoadLevelAsync("shooting_range");
+				Application.LoadLevel("shooting_range");
 				consoleOutput += "\n" + consoleInput + "\n>		Loading shooting range. Please wait...";
 				break;
 
@@ -94,12 +94,12 @@ public class LuaConsole : MonoBehaviour {
 				break;
 
 			case "winscene":
-				Application.LoadLevelAsync("scene");
+				Application.LoadLevelAsync("winscene");
 				consoleOutput += "\n" + consoleInput + "\n>		Loading ending sequence scene. Please wait...";
 				break;
 
 			case "menu":
-				Application.LoadLevelAsync("scene");
+				Application.LoadLevelAsync("splashscreen");
 				consoleOutput += "\n" + consoleInput + "\n>		Loading main menu scene. Please wait...";
 				break;
 

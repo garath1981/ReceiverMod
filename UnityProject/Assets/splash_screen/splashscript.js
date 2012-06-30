@@ -71,8 +71,7 @@ function OnGUI(){
 	GUI.DrawTexture(Rect(Screen.width*0.125, Screen.height * 0.9 - splash_credits.height*0.5, Screen.width*0.75,splash_credits.height), splash_credits, ScaleMode.ScaleToFit, true);
 	
 	if(state != SplashState.FADE_OUT){
-	    if (Event.current.type == EventType.KeyDown ||
-	        Event.current.type == EventType.MouseDown)
+	    if (Input.GetKeyDown(KeyCode.Space))
 	    {
 	        state = SplashState.FADE_OUT;
    			audiosource_effect.PlayOneShot(stop_sound, PlayerPrefs.GetFloat("sound_volume", 1.0));
