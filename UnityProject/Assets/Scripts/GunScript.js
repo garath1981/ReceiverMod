@@ -38,7 +38,7 @@ var pressure_on_trigger = PressureState.NONE;
 
 private var round_in_chamber:GameObject;
 enum RoundState {EMPTY, READY, FIRED, LOADING, JAMMED};
-private var round_in_chamber_state = RoundState.READY;
+var round_in_chamber_state = RoundState.READY;
 
 private var magazine_instance_in_gun:GameObject;
 private var mag_offset = 0.0;
@@ -68,6 +68,10 @@ private var kSlideLockSpeed = 20.0;
 enum MagStage {OUT, INSERTING, IN, REMOVING};
 private var mag_stage : MagStage = MagStage.IN;
 private var mag_seated = 1.0;
+
+//Tracking
+private var gameController : GameObject;
+private var achievementTracker : AchievementTracker;
 
 function Start () {
 	slide_rel_pos = transform.FindChild("slide").localPosition;
@@ -102,6 +106,11 @@ function Start () {
 		slide_amount = kSlideLockPosition;
 		slide_lock = true;
 	}
+
+	//Tracking
+	gameController = gameObject.FindWithTag("GameController");
+	achievementTracker = gameController.GetComponent(AchievementTracker);
+
 }
 
 function MagScript() : mag_script {
@@ -232,6 +241,10 @@ function MagEject() : boolean {
 	if(mag_stage != MagStage.OUT){
 		mag_stage = MagStage.REMOVING;
 		PlaySoundFromGroup(sound_mag_ejection, kGunMechanicVolume);
+
+		//Quick Reload Tracking
+		achievementTracker.QuickReload();
+
 		return true;
 	}
 	return false;
@@ -428,6 +441,10 @@ function Update () {
 		}
 		if(slide_amount == 0.0 && round_in_chamber_state == RoundState.LOADING){
 			round_in_chamber_state = RoundState.READY;
+
+			//Tracking
+			achievementTracker.QuickReload_ChamberRound();
+
 		}
 		if(slide_lock){
 			slide_amount = Mathf.Max(kSlideLockPosition, slide_amount);

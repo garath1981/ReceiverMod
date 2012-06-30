@@ -15,7 +15,8 @@ var targetImgs : Texture2D[];
 var ui_beep : AudioClip;
 
 private var hitYPos = -196;
-private var lastImg = 0;
+private var lastImg : float = Mathf.Infinity;
+private var noticeStayTime : float = 1.0;
 
 function OnGUI(){
 
@@ -28,7 +29,9 @@ function OnGUI(){
 		GUI.Label( Rect(Screen.width / 2 - 24, hitYPos + 56, 128, 128), "+" + targetHitScore.ToString(), "ShotScore");
 	}
 
-	if( Time.time > lastImg + 1.0 ){
+	if(Time.time >= lastImg && Time.time <= lastImg + noticeStayTime){
+		hitYPos = Mathf.Lerp(hitYPos, 16, Time.deltaTime * 8);
+	} else {
 		hitYPos = Mathf.Lerp(hitYPos, -196, Time.deltaTime * 1);
 	}
 
@@ -38,7 +41,7 @@ function SetTargetImg( imgName : String ){
 
 	audio.PlayOneShot(ui_beep);
 	lastImg = Time.time;
-	hitYPos = 16;
+	//hitYPos = 16;
 
 	switch(imgName){
 

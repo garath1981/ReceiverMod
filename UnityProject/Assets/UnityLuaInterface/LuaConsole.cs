@@ -89,17 +89,17 @@ public class LuaConsole : MonoBehaviour {
 				break;
 
 			case "game":
-				Application.LoadLevelAsync("scene");
+				Application.LoadLevel("scene");
 				consoleOutput += "\n" + consoleInput + "\n>		Loading main game scene. Please wait...";
 				break;
 
 			case "winscene":
-				Application.LoadLevelAsync("winscene");
+				Application.LoadLevel("winscene");
 				consoleOutput += "\n" + consoleInput + "\n>		Loading ending sequence scene. Please wait...";
 				break;
 
 			case "menu":
-				Application.LoadLevelAsync("splashscreen");
+				Application.LoadLevel("splashscreen");
 				consoleOutput += "\n" + consoleInput + "\n>		Loading main menu scene. Please wait...";
 				break;
 

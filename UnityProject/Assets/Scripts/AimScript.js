@@ -25,7 +25,13 @@ private var show_advanced_help = false;
 private var help_hold_time = 0.0;
 private var help_ever_shown = false;
 private var just_started_help = false;
-			
+
+// Tracking
+
+private var gameController : GameObject;
+private var achievementTracker : AchievementTracker;
+
+
 // Instances
 
 private var gun_instance:GameObject;
@@ -315,6 +321,11 @@ function Start() {
 		tapes_remaining.push(temp_total_tapes[rand_tape_id]);
 		temp_total_tapes.RemoveAt(rand_tape_id);
 	}
+
+	//Find components
+	gameController = gameObject.FindWithTag("GameController");
+	achievementTracker = gameController.GetComponent(AchievementTracker);
+
 }
 
 function AimPos() : Vector3 {
@@ -556,11 +567,13 @@ function HandleControls() {
 	
 	if(Input.GetButtonDown("Eject/Drop")){
 		if(mag_stage == HandMagStage.EMPTY && gun_instance){
+
 			if(gun_instance.GetComponent(GunScript).IsMagCurrentlyEjecting()){
 				queue_drop = true;
 			} else {
 				gun_instance.GetComponent(GunScript).MagEject();
 			}
+
 		} else if(mag_stage == HandMagStage.HOLD_TO_INSERT){
 			mag_stage = HandMagStage.HOLD;
 			hold_pose_spring.target_state = 1.0;
