@@ -311,6 +311,7 @@ function Start() {
 
 
 	var num_start_mags = Random.Range(0,3);
+	//Always give 3 mags in shooting range
 	if(Application.loadedLevelName == "shooting_range"){
 		num_start_mags = 2;
 	}
@@ -318,7 +319,6 @@ function Start() {
 		weapon_slots[i].type = WeaponSlotType.MAGAZINE;
 		weapon_slots[i].obj = Instantiate(magazine_obj);
 	}
-
 
 	loose_bullets = new Array();
 	loose_bullet_spring = new Array();
