@@ -193,6 +193,15 @@ function WasShot(){
 	rotation_x += Random.Range(-4,4);
 	rotation_y += Random.Range(-4,4);
 	if(!god_mode && !won){
+
+		if(!dying && !dead){
+			//Running death
+			var running = gameObject.FindWithTag("Player").GetComponent(CharacterMotor).running;
+			if( running == 1 ){
+				gameObject.FindWithTag("GameController").GetComponent(AchievementTracker).RunningShot_Unlock();
+			}
+		}
+
 		dying = true;
 		if(Random.Range(0.0,1.0) < 0.3){
 			SetDead(true);
@@ -210,10 +219,21 @@ function FallDeath(vel : Vector3) {
 		dead_fade = Mathf.Max(dead_fade, 0.5);
 		head_recoil_spring_x.vel += Random.Range(-400,400);
 		head_recoil_spring_y.vel += Random.Range(-400,400);
+
+		//Terminal Velocity Achievement
+		if( vel.y * -1 > 10 ){
+			gameObject.FindWithTag("GameController").GetComponent(AchievementTracker).TerminalVel_Unlock( vel.y );
+		}
 	}
 }
 
-function InstaKill() {
+function InstaKill(){
+
+	if(!dead){
+		//Out of World Achievement
+		gameObject.FindWithTag("GameController").GetComponent(AchievementTracker).OutOfLevel_Unlock();
+	}
+
 	SetDead(true);
 	dead_fade = 1.0;
 }
@@ -222,6 +242,12 @@ function Shock() {
 	if(!god_mode && !won){
 		if(!dead){
 			PlaySoundFromGroup(sound_electrocute, 1.0);
+
+			//Running Taze Death Achievement
+			var running = gameObject.FindWithTag("Player").GetComponent(CharacterMotor).running;
+			if( running == 1 ){
+				gameObject.FindWithTag("GameController").GetComponent(AchievementTracker).RunningTazeBot_Unlock();
+			}
 		}
 		SetDead(true);
 	}
